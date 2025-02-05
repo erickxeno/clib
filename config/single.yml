@@ -1,0 +1,39 @@
+Mysql:
+  Write:
+    DbName: ut_db # 数据库名
+    EnabledReadReplicas: true
+    Host: 127.0.0.1
+    Port: 3306
+    User: root
+    Password: root
+    Charset: utf8mb4
+    Timeout: 1s
+    ReadTimeout: 2s
+    WriteTimeout: 3s
+    MaxIdleConns: 100
+    MaxOpenConns: 300
+    LogMode: true # 打印SQL, 正式环境配置可以删除, 避免影响性能
+  Read: # 读写分离, 都想用写库, 可以删除Read配置
+    DbName: ut_db
+
+Redis:
+  Addr: 127.0.0.1:6379
+  DialTimeout: 500ms
+  ReadTimeout: 300ms
+  WriteTimeout: 400ms
+  PoolInitSize: 20
+  PoolSize: 100
+  PoolTimeout: 100ms
+  IdleTimeout: 5m
+  LiveTimeout: 10m
+  MaxRetries: 1
+
+Bloom:
+  BitSize: 1000000
+  TolerantRate: .01
+  Redis:
+    Addr: 127.0.0.1:6379
+
+Tcc:
+  ServiceName: damai.demo.example_sandbox
+  ConfSpace: sandbox

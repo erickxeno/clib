@@ -1,0 +1,39 @@
+#docker network create -d bridge --subnet 192.168.1.0/24 --gateway 192.168.1.1 dockernet
+version: "3"
+services:
+  mysql:
+    container_name: mysql
+    image: hub.byted.org/ee/mysql:5.7
+    volumes:
+      - ../mysql/init_data:/docker-entrypoint-initdb.d
+      - ../mysql/temai.cnf:/etc/mysql/conf.d/temai.cnf
+    environment:
+      MYSQL_DATABASE: ecom_ut_db
+      MYSQL_ROOT_PASSWORD: root
+    restart: always
+    ports:
+      - 3306:3306
+    command: --sql-mode=""
+  redis:
+    container_name: redis
+    image: hub.byted.org/ee/redis:5
+    restart: always
+    ports:
+      - 6379:6379
+  es:
+    container_name: es
+    image: hub.byted.org/ee/elasticsearch:7.8.0
+    restart: always
+    environment:
+      cluster.name: docker-cluster
+      bootstrap.memory_lock: "true"
+      discovery.type: single-node
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+    ports:
+      - 9200:9200
+  mongo:
+    container_name: mongo
+    image: hub.byted.org/ee/mongo:5.0.2
+    restart: always
+    ports:
+      - 27017:27017

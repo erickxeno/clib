@@ -1,0 +1,109 @@
+Mysql:
+  - Name: sandbox
+    Write:
+      DbName: ut_db # 数据库名
+      EnabledReadReplicas: true
+      Host: 127.0.0.1
+      Port: 3306
+      User: root
+      Password: root
+      Charset: utf8mb4
+      Timeout: 1s
+      ReadTimeout: 2s
+      WriteTimeout: 3s
+      MaxIdleConns: 100
+      MaxOpenConns: 300
+      LogMode: true # 打印SQL, 正式环境配置可以删除, 避免影响性能
+  - Name: online
+    Write:
+        DbName: ut_db # 数据库名
+        EnabledReadReplicas: true
+        Host: 127.0.0.1
+        Port: 3306
+        User: root
+        Password: root
+        Charset: utf8mb4
+        Timeout: 1s
+        ReadTimeout: 2s
+        WriteTimeout: 3s
+        MaxIdleConns: 100
+        MaxOpenConns: 300
+        LogMode: true # 打印SQL, 正式环境配置可以删除, 避免影响性能
+
+Redis:
+  - Name: sandbox
+    Addr: 127.0.0.1:6379
+    DialTimeout: 500ms
+    ReadTimeout: 300ms
+    WriteTimeout: 400ms
+    PoolInitSize: 20
+    PoolSize: 100
+    PoolTimeout: 100ms
+    IdleTimeout: 5m
+    LiveTimeout: 10m
+    MaxRetries: 1
+  - Name: online
+    Addr: 127.0.0.1:6379
+    DialTimeout: 500ms
+    ReadTimeout: 300ms
+    WriteTimeout: 400ms
+    PoolInitSize: 40
+    PoolSize: 200
+    PoolTimeout: 200ms
+    IdleTimeout: 10m
+    LiveTimeout: 20m
+    MaxRetries: 2
+  - Name: zero
+    Addr: 127.0.0.1:6379
+    DialTimeout: 0ms
+    ReadTimeout: 0ms
+    WriteTimeout: 0ms
+    PoolInitSize: 0
+    PoolSize: 0
+    PoolTimeout: 0ms
+    IdleTimeout: 0m
+    LiveTimeout: 0m
+    MaxRetries: 0
+
+ES:
+  - Name: sandbox
+    Write:
+      Proxy: 127.0.0.1:9200
+      Cluster: test
+      User: user
+      Password: password
+      Timeout: 4000ms
+      MaxRetries: 1
+    Read:
+      Proxy: 127.0.0.1:9200
+      Cluster: test
+      User: user
+      Password: password
+      Timeout: 3000ms
+      MaxRetries: 1
+  - Name: online
+    Write:
+        Proxy: 127.0.0.1:9200
+        Cluster: test
+        User: user
+        Password: password
+        Timeout: 4000ms
+        MaxRetries: 1
+    Read:
+        Proxy: 127.0.0.1:9200
+        Cluster: test
+        User: user
+        Password: password
+        Timeout: 3000ms
+        MaxRetries: 1
+
+Tcc:
+  - Name: sandbox
+    ServiceName: damai.demo.example_sandbox
+    ConfSpace: sancbox
+  - Name: online
+    ServiceName: damai.demo.example
+    ConfSpace:
+
+Metrics:
+    Enable: false

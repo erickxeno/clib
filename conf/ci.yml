@@ -1,0 +1,15 @@
+Member: "A1"
+Elements:
+  - "E1"
+  - "E2"
+Struct:
+  Member: "A2"
+  Elements:
+    - "E11"
+    - "E12"
+First:
+  Second:
+    Member: "A3"
+    Elements:
+      - "E111"
+      - "E112"
