@@ -5,7 +5,6 @@ go 1.18
 replace github.com/erickxeno/clib/time => ../time
 
 require (
-	github.com/erickxeno/clib/time v0.0.0-00010101000000-000000000000
 	github.com/stretchr/testify v1.8.4
 	golang.org/x/time v0.3.0
 )
