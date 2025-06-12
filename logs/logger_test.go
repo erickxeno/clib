@@ -319,7 +319,7 @@ func TestPushNotice(t *testing.T) {
 
 func TestNewNoticeCtx(t *testing.T) {
 	ctx := context.Background()
-	ctx = context.WithValue(ctx, logIDCtxKey, "1111")
+	ctx = context.WithValue(ctx, LogIDCtxKey, "1111")
 	ctx = NewNoticeCtx(ctx)
 	V1 := NewCLogger(SetWriter(DebugLevel, w.NewConsoleWriter()))
 	CtxPushNotice(ctx, "key1", "value1")

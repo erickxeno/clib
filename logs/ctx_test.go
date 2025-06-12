@@ -19,4 +19,11 @@ func TestCtxAddKVs(t *testing.T) {
 	V1 := NewCompatLogger(SetWriter(DebugLevel, w.NewConsoleWriter()))
 	V1.CtxInfo(ctx, "hel%s", "lo world")
 
+	ctx = context.WithValue(ctx, LogIDCtxKey, "temp_logid")
+	ctx = context.WithValue(ctx, spanIDCtxKey, "temp_spanid")
+	ctx = context.WithValue(ctx, noticeCtxKey, "temp_notice")
+	ctx = context.WithValue(ctx, stackInfoCtxKey, "temp_stack_info")
+	ctx = context.WithValue(ctx, DynamicLogLevelKey, "temp_dynamic_log_level")
+
+	V1.CtxInfo(ctx, "hel%s", "lo world")
 }

@@ -8,13 +8,17 @@ import (
 	"github.com/erickxeno/clib/logs/writer"
 )
 
+// 定义自定义类型作为context key
+type contextKey string
+
 const (
-	kvCtxKey           = "K_KVs"
-	logIDCtxKey        = "K_LOGID"
-	spanIDCtxKey       = "K_SPANID"
-	noticeCtxKey       = "K_NOTICE"
-	stackInfoCtxKey    = "K_STACK_INFO"
-	DynamicLogLevelKey = "K_DYNAMIC_LOG_LEVEL"
+	LogIDCtxKey = contextKey("K_LOGID")
+
+	kvCtxKey           = contextKey("K_KVs")
+	spanIDCtxKey       = contextKey("K_SPANID")
+	noticeCtxKey       = contextKey("K_NOTICE")
+	stackInfoCtxKey    = contextKey("K_STACK_INFO")
+	DynamicLogLevelKey = contextKey("K_DYNAMIC_LOG_LEVEL")
 )
 
 var (
@@ -165,7 +169,7 @@ func logIDFromContext(ctx context.Context) string {
 	if ctx == nil {
 		return "-"
 	}
-	val := ctx.Value(logIDCtxKey)
+	val := ctx.Value(LogIDCtxKey)
 	if val != nil {
 		logID := val.(string)
 		return logID

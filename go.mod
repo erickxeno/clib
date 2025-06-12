@@ -5,7 +5,8 @@ go 1.16
 require (
 	github.com/BurntSushi/toml v0.3.1
 	github.com/bytedance/mockey v1.2.4
-	github.com/erickxeno/clib/time v0.0.0-20250205033146-dff469f57c05
+	github.com/erickxeno/clib/logs v1.0.0
+	github.com/erickxeno/clib/time v1.0.0
 	github.com/facebookgo/ensure v0.0.0-20200202191622-63f1cf65ac4c
 	github.com/facebookgo/stack v0.0.0-20160209184415-751773369052 // indirect
 	github.com/facebookgo/subset v0.0.0-20200203212716-c811ad88dec4 // indirect
