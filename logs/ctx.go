@@ -12,8 +12,7 @@ import (
 type contextKey string
 
 const (
-	LogIDCtxKey = contextKey("K_LOGID")
-
+	LogIDCtxKey        = contextKey("K_LOGID")
 	kvCtxKey           = contextKey("K_KVs")
 	spanIDCtxKey       = contextKey("K_SPANID")
 	noticeCtxKey       = contextKey("K_NOTICE")
