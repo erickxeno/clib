@@ -4,7 +4,7 @@ import (
 	"context"
 	"math"
 
-	"github.com/erickxeno/clib/logid"
+	"github.com/erickxeno/logs/logid"
 )
 
 type MockIDGenerator struct{}
